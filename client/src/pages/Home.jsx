@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Contact from '../features/contact/Contact'
 
 export default function HomePage() {
   return (
@@ -51,7 +52,7 @@ export default function HomePage() {
 
       <section>
         <h2 className="text-2xl font-semibold">Join Us</h2>
-        <Link to="/contact" className="underline">Go to Contact</Link>
+        <Contact />
       </section>
     </div>
   )
