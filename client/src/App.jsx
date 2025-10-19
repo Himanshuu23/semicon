@@ -4,7 +4,7 @@ import AppRoutes from './router/Routes'
 
 export default function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-black">
       <Navbar />
       <main className="flex-grow">
         <AppRoutes />
