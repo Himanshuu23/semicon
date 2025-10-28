@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 
 export default function Articles() {
-  const cards = [
-    { title: "Getting Started with Zynq SoCs", id: "getting-started-zynq-socs", tags: ["FPGA", "Semiconductor"], author: "Sam Rivera" },
-    { title: "AI & ML Trends in Embedded Systems", id: "ai-ml-embedded-systems", tags: ["AI/ML", "Embedded"], author: "Nina Patel" },
-    { title: "Designing Custom FPGAs for IoT Applications", id: "custom-fpga-iot", tags: ["FPGA", "IoT"], author: "Luis Moreno" },
-    { title: "Introduction to PYNQ Python on Zynq", id: "introduction-pynq", tags: ["PYNQ", "Python"], author: "Aisha Khan" },
-    { title: "Semiconductor Fabrication: What You Should Know", id: "semiconductor-fabrication-basics", tags: ["Semiconductor", "Manufacturing"], author: "Kevin Zhang" },
-    { title: "Embedded Electronics for Autonomous Vehicles", id: "embedded-electronics-autonomous", tags: ["Embedded", "Electronics"], author: "Rachel Kim" },
-  ];
+const cards = [
+  { title: "Getting Started with Zynq SoCs", id: "getting-started-zynq-socs", tags: ["FPGA", "Semiconductor"], author: "Harshbir Singh" },
+  { title: "AI & ML Trends in Embedded Systems", id: "ai-ml-embedded-systems", tags: ["AI/ML", "Embedded"], author: "Tanishq" },
+  { title: "Designing Custom FPGAs for IoT Applications", id: "custom-fpga-iot", tags: ["FPGA", "IoT"], author: "Prince" },
+  { title: "Introduction to PYNQ Python on Zynq", id: "introduction-pynq", tags: ["PYNQ", "Python"], author: "Abhideep" },
+  { title: "Semiconductor Fabrication: What You Should Know", id: "semiconductor-fabrication-basics", tags: ["Semiconductor", "Manufacturing"], author: "Prashant" },
+  { title: "Embedded Electronics for Autonomous Vehicles", id: "embedded-electronics-autonomous", tags: ["Embedded", "Electronics"], author: "Rakshit" },
+];
 
   return (
-    <div className="p-8 bg-black min-h-screen text-white">
+    <div id="articles" className="p-8 bg-black min-h-screen text-white">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {cards.map(card => (
           <Link to={`/articles/${card.id}`} key={card.id} className="block transform transition-transform hover:scale-105 bg-gray-900 p-6 rounded-lg shadow-lg">

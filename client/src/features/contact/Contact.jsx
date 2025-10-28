@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Contact() {
   return (
-    <section className="flex h-[80vh]">
+    <section id="contact" className="flex h-[80vh]">
       <div className="w-1/2 bg-black flex flex-col justify-center items-center px-12">
         <h2 className="text-white text-5xl font-bold mb-8">Join Us</h2>
         <Link to="/register" className="px-8 py-4 text-xl text-black bg-white rounded-full hover:bg-gray-200">
@@ -10,6 +10,7 @@ export default function Contact() {
         </Link>
       </div>
       <div className="w-1/2 bg-black flex flex-col justify-center items-center px-12">
+        <h2 className="text-white text-4xl font-bold mb-8">Got Query?</h2>
         <form className="w-full max-w-lg space-y-6">
           <input
             type="text"

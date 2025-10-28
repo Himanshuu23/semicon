@@ -5,6 +5,8 @@ import Contact from '../features/contact/Contact'
 import Articles from '../features/articles/Article'
 import Provide from '../features/provide/Provide'
 import Divisions from '../features/divisions/Division'
+import Events from '../features/events/Events'
+import Projects from '../features/projects/Projects'
 import Team from '../features/team/Team'
 import PremiumSoftwareTicker from '../components/Software'
 
@@ -17,6 +19,8 @@ export default function HomePage() {
       <Provide />
       <PremiumSoftwareTicker />
       <Articles />
+      <Projects />
+      <Events />
       <Team />
       <Contact />
     </div>

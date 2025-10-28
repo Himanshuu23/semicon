@@ -4,27 +4,51 @@ export default function AboutUsCarousel() {
   const slides = [
     {
       type: 'intro',
-      image: '/images/team-circle.png',
-      heading: 'Welcome to Our Mission',
-      text: 'We are pioneers in cutting-edge electronics, software and AI/ML development.'
+      image: '/vinod_dham.jpg',
+      heading: 'Semicon DTU & VDSemix',
+      name: 'Shri Vinod Dham',
+      subtitle: 'Father of the Pentium Chips',
+      textLines: [
+        'Semicon DTU was co-founded alongside the Vinod Dham Centre of Excellence (VDSemix).',
+        'Promoting research and innovation in semiconductors and microelectronics.',
+      ],
     },
     {
       type: 'whatWeDo',
+      image: '/dtu.jpg',
       heading: 'What We Do',
-      points: [
-        'Electronics Design & Fabrication',
-        'Embedded Systems & IoT Solutions',
-        'AI/ML Model Development',
-        'Robotics & Automation',
-        'Security & Blockchain Integration'
-      ]
+      textLines: [
+        'Hands-on access to advanced hardware & systems.',
+        'Mentorship from industry experts and peer collaboration.',
+        'Driven practical experience in electronics, embedded systems & AI/ML.',
+      ],
     },
     {
-      type: 'vision',
-      image: '/images/vision-circle.png',
-      heading: 'Join Our Vision',
-      text: 'Innovate with us in the realms of semiconductors, software and intelligent systems.'
-    }
+      type: 'advantages',
+      heading: 'Advantages You Get',
+      points: [
+        {
+          title: 'Hands-on Technical Learning',
+          desc: 'Live labs, guided workshops, real hardware exposure.',
+        },
+        {
+          title: 'Industry Connect',
+          desc: 'Direct mentorship and sessions with semiconductor professionals.',
+        },
+        {
+          title: 'Research & Projects',
+          desc: 'Design challenges, paper publications, real-world impact.',
+        },
+        {
+          title: 'Events & Competitions',
+          desc: 'Hackathons, national contests, innovation showcases.',
+        },
+        {
+          title: 'Community & Growth',
+          desc: 'Member-driven club, shared goals, hardware ecosystem.',
+        },
+      ],
+    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,80 +56,104 @@ export default function AboutUsCarousel() {
   const slideCount = slides.length;
 
   const resetTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
-      () => setCurrentIndex((prevIndex) => (prevIndex + 1) % slideCount),
-      5000
+      () => setCurrentIndex((prev) => (prev + 1) % slideCount),
+      6000
     );
-    return () => {
-      resetTimeout();
-    };
+    return () => resetTimeout();
   }, [currentIndex, slideCount]);
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slideCount - 1 : prevIndex - 1
-    );
-  };
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev === 0 ? slideCount - 1 : prev - 1));
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % slideCount);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slideCount);
-  };
+  const slide = slides[currentIndex];
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black text-white">
-      <div className="absolute inset-y-0 left-0 flex items-center z-20">
-        <button onClick={prevSlide} className="p-4 text-white bg-white/10 hover:bg-white/20 rounded-full ml-4">
-          {'<'}
-        </button>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center z-20">
-        <button onClick={nextSlide} className="p-4 text-white bg-white/10 hover:bg-white/20 rounded-full mr-4">
-          {'>'}
-        </button>
-      </div>
-      <div
-        className="whitespace-nowrap transition-transform duration-700 ease-in-out h-full"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+    <section
+      id="about"
+      className="relative w-full h-screen overflow-hidden bg-black text-white flex flex-col justify-center items-center"
+    >
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full"
       >
-        {slides.map((slide, idx) => (
-          <div key={idx} className="inline-block w-full h-full align-top">
-            {slide.type === 'whatWeDo' ? (
-              <div className="flex h-full items-center justify-center px-12">
-                <div className="max-w-2xl text-center">
-                  <h2 className="text-4xl font-bold mb-8">{slide.heading}</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
-                    {slide.points.map((point, i) => (
-                      <div key={i} className="bg-gray-900 p-6 rounded-lg hover:bg-gray-800 transition-colors">
-                        {point}
-                      </div>
-                    ))}
+        {'<'}
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 p-3 bg-white/10 hover:bg-white/20 rounded-full"
+      >
+        {'>'}
+      </button>
+
+      <div className="w-full max-w-5xl px-8">
+        {slide.type === 'advantages' ? (
+          <div className="text-center">
+            <h2 className="text-4xl font-bold mb-10">{slide.heading}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {slide.points.map((point, i) => (
+                <div
+                  key={i}
+                  className="group bg-gray-800/30 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 border border-white/20 max-h-20 hover:max-h-64 flex flex-col justify-start p-4"
+                >
+                  <div className="text-xl font-semibold mb-2">
+                    {point.title}
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-gray-300">
+                    {point.desc}
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="flex h-full items-center justify-center px-12">
-                <div className="flex flex-col md:flex-row items-center gap-12">
-                  {slide.image && (
-                    <div className="flex-shrink-0">
-                      <img src={slide.image} alt="" className="w-40 h-40 rounded-full object-cover border-4 border-white/30" />
-                    </div>
-                  )}
-                  <div className="text-center md:text-left max-w-lg">
-                    <h2 className="text-4xl font-bold mb-4">{slide.heading}</h2>
-                    <p className="text-lg text-gray-300">{slide.text}</p>
-                  </div>
-                </div>
-              </div>
-            )}
+              ))}
+            </div>
           </div>
-        ))}
+        ) : slide.type === 'whatWeDo' ? (
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <div className="w-full md:w-1/2 text-center md:text-left">
+              <h2 className="text-4xl font-bold mb-4">{slide.heading}</h2>
+              <p className="text-lg text-gray-300 space-y-2">
+                {slide.textLines.map((line, idx) => (
+                  <span key={idx} className="block">
+                    {line}
+                  </span>
+                ))}
+              </p>
+            </div>
+            <div className="w-full md:w-1/2 flex justify-end">
+              <img
+                src={slide.image}
+                alt={slide.heading}
+                className="w-72 h-72 object-cover rounded-full"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            <div className="text-left md:text-left md:w-2/3">
+              <h2 className="text-4xl font-bold mb-4">{slide.heading}</h2>
+              <p className="text-lg text-gray-300 space-y-2">
+                {slide.textLines.map((line, idx) => (
+                  <span key={idx} className="block">{line}</span>
+                ))}
+              </p>
+            </div>
+            <div className="flex-shrink-0 text-center md:w-1/3">
+              <img
+                src={slide.image}
+                alt={slide.name}
+                style={{ transform: 'translateX(50px)' }}
+                className="w-52 h-52 rounded-full object-cover border-4 border-white/40 shadow-lg"
+              />
+              <h3 className="text-2xl font-semibold mt-4">{slide.name}</h3>
+              <p className="text-gray-400">{slide.subtitle}</p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

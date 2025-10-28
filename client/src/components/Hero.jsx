@@ -1,8 +1,10 @@
+import { HashLink } from 'react-router-hash-link';
+
 export default function HeroSection() {
-  const roles = ["Electronics", "Software", "AI/ML", "Embedded"];
+  const roles = ["Electronics", "Software", "AI/ML", "Quantum"];
 
   return (
-    <section className="relative w-full h-screen z-100 bg-black text-white flex flex-col items-center justify-center overflow-hidden">
+    <section id="hero" className="relative w-full h-screen z-100 bg-black text-white flex flex-col items-center justify-center overflow-hidden">
       <video
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
         src="/hero.mp4"
@@ -17,8 +19,13 @@ export default function HeroSection() {
           Welcome to Semicon DTU — the next-gen innovation society driving the future of electronics, AI, and research at DTU.
         </p>
         <div className="flex space-x-4 mt-4">
-          <button className="bg-white text-black px-6 py-3 rounded-full font-semibold">Explore</button>
-          <button className="border border-white px-6 py-3 rounded-full font-semibold">Join Us</button>
+
+<HashLink smooth to="/#about" className="bg-white text-black px-6 py-3 rounded-full font-semibold">
+  Explore
+</HashLink>
+<HashLink smooth to="/#contact" className="border border-white px-6 py-3 rounded-full font-semibold">
+  Join Us
+</HashLink>
         </div>
         <div className="flex flex-wrap justify-center gap-6 mt-8">
           {roles.map((role, index) => (
