@@ -158,6 +158,15 @@ export default function Team() {
 
   const departmentalDirectors = [
     {
+      name: 'Piyush',
+      role: 'Project Director',
+      image: '/piyush.jpg',
+      linkedin: '',
+      email: '',
+      speciality: 'Project Management',
+      techStack: ['Agile', 'Scrum'],
+    },
+    {
       name: 'Rajat',
       role: 'Corporate Director',
       image: '/rajat.jpg',
@@ -183,15 +192,6 @@ export default function Team() {
       email: '',
       speciality: 'UX/UI & Graphics',
       techStack: ['Figma', 'Illustrator'],
-    },
-    {
-      name: 'Piyush',
-      role: 'Project Director',
-      image: '/piyush.jpg',
-      linkedin: '',
-      email: '',
-      speciality: 'Project Management',
-      techStack: ['Agile', 'Scrum'],
     },
   ];
 
